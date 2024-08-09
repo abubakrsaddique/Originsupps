@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-custom-gradient {
+  background: linear-gradient(
+    89.95deg,
+    #ab2ddf -12.76%,
+    #fa9b18 77.19%,
+    #faa11d 89.74%,
+    #fbb22c 104.38%,
+    #fdcf45 123.21%,
+    #ffe155 133.66%,
+    #ffdf61 135.76%,
+    #ffdb84 139.94%,
+    #ffd5bd 144.12%,
+    #ffbc85 160.86%,
+    #c77fff 196.42%
+  );
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.remove-arrow::-webkit-inner-spin-button,
+.remove-arrow::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

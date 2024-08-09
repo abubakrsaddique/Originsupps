@@ -26,6 +26,13 @@ const Navbar = () => {
               </span>
             </p>
           </Link>
+          <Link href="/product">
+            <p className="uppercase group">
+              <span className="text-primary text-base leading-normal font-organetto  font-normal hover:text-lightgreen">
+                Add product
+              </span>
+            </p>
+          </Link>
         </div>
 
         {/* Logo */}

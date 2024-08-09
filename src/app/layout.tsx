@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Navbar from "@/src/components/navbar/Navbar";
+import TanstackProvider from "../provider/TanstackProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -39,8 +43,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${organetto.variable} `}>
-        <Navbar />
-        {children}
+        <TanstackProvider>
+          <Navbar />
+          {children}
+          <ToastContainer position="top-center" />
+        </TanstackProvider>
       </body>
     </html>
   );
