@@ -5,4 +5,7 @@ export interface Product {
   title: string;
   price: number;
   flavour: string;
+  descriptionHeading: string;
+  descriptionParagraph: string;
+  size: string;
 }

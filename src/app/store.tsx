@@ -1,3 +1,4 @@
 import { atom } from "jotai";
+import { Product } from "../types";
 
-export const productsAtom = atom([]);
+export const productAtom = atom<Product | null>(null);

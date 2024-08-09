@@ -5,12 +5,18 @@ import Image from "next/image";
 
 import { useProducts } from "@/src/hook/useProductData";
 import CartIcon from "@/public/carticon.svg";
+import { useRouter } from "next/navigation";
 
 const Shop = () => {
+  const router = useRouter();
   const { data: products, isLoading, error } = useProducts();
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products</p>;
+
+  const handleProductClick = (productId: string) => {
+    router.push(`/product/${productId}`);
+  };
 
   return (
     <div>
@@ -21,7 +27,11 @@ const Shop = () => {
         <div className="max-w-7xl mx-auto mt-[30px]">
           <div className="grid grid-cols-2  justify-center  justify-items-center w-full gap-x-[10px]  gap-y-[30px] px-[200px] ">
             {products?.map((product) => (
-              <div key={product.id} className="flex justify-center">
+              <div
+                key={product.id}
+                className="flex justify-center"
+                onClick={() => handleProductClick(product.id)}
+              >
                 <div className="w-[370px] lg:max-w-[300px] mob:max-w-[170px]">
                   <div className="group">
                     <div className="w-[370px] lg:w-full lg:max-w-[300px] mob:max-w-[170px] mob:max-h-[170px] rounded-[40px] mob:rounded-[16px] h-[370px] tab:h-[40%] bg-[#B2B2B2] flex items-center justify-center relative group-hover:border-[#BBFF2E] group-hover:border-[4px] group-hover:bg-[#F3F3F3] transition-all duration-400 group-hover:shadow-xl group-hover:cursor-pointer">
@@ -55,7 +65,7 @@ const Shop = () => {
                   <div className="mt-[15px]">
                     <div className="flex items-start justify-between">
                       <p className="font-poppins text-black text-[22px] mob:text-[14px] font-medium">
-                        Hyper Drive Preworkout
+                        {product.title}
                       </p>
                       <p className="font-poppins text-black text-[24px] mob:text-[16px] font-semibold leading-6 shrink-0">
                         ${product.price}

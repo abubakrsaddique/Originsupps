@@ -14,6 +14,8 @@ module.exports = {
       black: "black",
       lightgreen: "rgb(196,255,46)",
       gray: "rgb(128,129,134)",
+      lightgray: "rgb(201,201,201)",
+      secondary: "rgb(231,231,231)",
       "custom-hsla1": "hsla(40, 32%, 93%, 0)",
       "custom-hsla2": "hsla(40, 32%, 93%, 0.63)",
       "custom-f2eee6": "#f2eee6",

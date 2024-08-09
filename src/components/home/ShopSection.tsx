@@ -2,16 +2,23 @@
 
 import React from "react";
 import Image from "next/image";
-import Marquee from "react-fast-marquee";
 
 import CartIcon from "@/public/carticon.svg";
 import { useProducts } from "@/src/hook/useProductData";
 
+import Marque from "../marquee/Marque";
+import { useRouter } from "next/navigation";
+
 const ShopSection = () => {
+  const router = useRouter();
   const { data: products, isLoading, error } = useProducts();
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products</p>;
+
+  const handleProductClick = (productId: string) => {
+    router.push(`/product/${productId}`);
+  };
 
   return (
     <section className=" bg-primary pt-5 relative z-[10] ">
@@ -22,7 +29,10 @@ const ShopSection = () => {
       </div>
       <div className="flex   w-full pb-[145px]   no-scrollbar px-[135px] gap-[30px] overflow-scroll mt-[70px] ">
         {products?.map((product) => (
-          <div className="flex justify-center">
+          <div
+            className="flex justify-center"
+            onClick={() => handleProductClick(product.id)}
+          >
             <div className="w-[370px] lg:max-w-[300px] mob:max-w-[170px]">
               <div className="group">
                 <div className="w-[370px] lg:w-full lg:max-w-[300px] mob:max-w-[170px] mob:max-h-[170px] rounded-[40px] mob:rounded-[16px] h-[370px] tab:h-[40%] bg-[#B2B2B2] flex items-center justify-center relative group-hover:border-[#BBFF2E] group-hover:border-[4px] group-hover:bg-[#F3F3F3] transition-all duration-400 group-hover:shadow-xl group-hover:cursor-pointer">
@@ -56,7 +66,7 @@ const ShopSection = () => {
               <div className="mt-[15px]">
                 <div className="flex items-start justify-between">
                   <p className="font-poppins text-black text-[22px] mob:text-[14px] font-medium">
-                    Hyper Drive Preworkout
+                    {product.title}
                   </p>
                   <p className="font-poppins text-black text-[24px] mob:text-[16px] font-semibold leading-6 shrink-0">
                     ${product.price}
@@ -74,32 +84,7 @@ const ShopSection = () => {
         ))}
       </div>
       {/* Marque  */}
-      <Marquee speed={50} gradient={false} pauseOnHover={true} direction="left">
-        <div className="h-[65px] flex items-center bg-black border-b-2 border-t-2 border-gray-700">
-          <div className="rfm-marquee-container">
-            <div className="rfm-marquee">
-              <div className="rfm-initial-child-container">
-                {[...Array(10)].map((_, index) => (
-                  <div key={index} className="rfm-child">
-                    <span className="mr-[6px] font-organetto text-lightgreen font-normal text-[24px]">
-                      • Pump • focus • performance • Pump • focus
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="rfm-marquee">
-                {[...Array(10)].map((_, index) => (
-                  <div key={index} className="rfm-child">
-                    <span className="mr-[6px] font-organetto text-[#C0FF2E] font-normal text-[24px]">
-                      • Pump • focus • performance • Pump • focus
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Marquee>
+      <Marque />
     </section>
   );
 };
