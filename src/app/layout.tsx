@@ -1,8 +1,30 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
+import Navbar from "@/src/components/navbar/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const organetto = localFont({
+  src: [
+    {
+      path: "../../public/font/Organetto/BoldOrganetto.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/font/Organetto/ExtraBoldOrganetto.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-organetto",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +38,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${poppins.variable} ${organetto.variable} `}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

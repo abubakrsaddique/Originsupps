@@ -1,20 +1,35 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      primary: "white",
+      black: "black",
+      lightgreen: "rgb(196,255,46)",
+      gray: "rgb(128,129,134)",
+      "custom-hsla1": "hsla(40, 32%, 93%, 0)",
+      "custom-hsla2": "hsla(40, 32%, 93%, 0.63)",
+      "custom-f2eee6": "#f2eee6",
+    },
+    screens: {
+      lg: { max: "1024px" },
+      tab: { max: "991px" },
+      mob: { max: "768px" },
+    },
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        poppins: ["var(--font-poppins)"],
+        organetto: ["var(--font-organetto)"],
       },
     },
   },
+
   plugins: [],
 };
-export default config;
