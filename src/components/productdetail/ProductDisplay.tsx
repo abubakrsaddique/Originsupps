@@ -66,12 +66,12 @@ const ProductDisplay = () => {
 
   return (
     <section className="w-full max-w-7xl mx-auto">
-      <div className="flex mt-12 pb-14">
+      <div className="flex mob:block mob:mt-4 mob:pb-6 mt-12 pb-14">
         {/* Left Side */}
-        <div className="flex justify-center w-full max-w-[40%]">
-          <div className="max-w-[470px] px-9">
-            <div className="rounded-[50px] flex items-center justify-center w-full h-[410px] bg-lightgray relative">
-              <div className="w-full h-full relative">
+        <div className="flex justify-center w-full max-w-[40%] mob:max-w-full mob:pb-6 tab:pb-10">
+          <div className="max-w-[470px] px-9 tab:max-w-[370px] mob:max-w-full">
+            <div className="rounded-[50px] flex items-center justify-center w-full h-[410px] bg-lightgray relative mob:h-[344px]">
+              <div className="w-full h-full relative mob:h-auto mob:rounded-none">
                 <Image
                   alt={product.title}
                   className="rounded-[40px] h-full w-full"
@@ -84,16 +84,16 @@ const ProductDisplay = () => {
           </div>
         </div>
         {/* Right Side */}
-        <div className="w-full pl-[50px] pr-5 flex flex-col justify-between max-w-[650px]">
+        <div className="w-full pl-[50px] pr-5 flex flex-col justify-between max-w-[650px] tab:px-0 mob:px-5 ">
           <div>
             <div className="flex items-center justify-between">
-              <p className="font-poppins text-black text-4xl font-bold leading-10 uppercase">
+              <p className="font-poppins text-black text-4xl font-bold leading-10 uppercase mob:text-2xl">
                 {product.title}
               </p>
             </div>
-            <div className="flex items-center gap-[10px] mt-6">
-              <div className="py-2 px-2 bg-transparent border-gray border-2 hover:border-[#FAA41F] rounded-3xl">
-                <p className="font-poppins text-black text-sm font-medium leading-6 flex justify-center items-center">
+            <div className="flex items-center gap-[10px] mt-6 mob:mt-2">
+              <div className="py-2 px-2 bg-transparent border-gray border-2 hover:border-[#FAA41F] rounded-3xl mob:px-2">
+                <p className="font-poppins text-black text-sm font-medium leading-6 flex justify-center items-center mob:text-xs mob:font-normal">
                   <span className="mr-2">
                     <p className="h-6 w-6 rounded-full bg-custom-gradient"></p>
                   </span>
@@ -131,7 +131,7 @@ const ProductDisplay = () => {
           </div>
           <div className="flex items-center justify-between pl-[3%] pr-[10%] pb-10">
             <div className="flex items-center gap-[19px] w-full">
-              <div className="flex items-center gap-[2px]">
+              <div className="flex items-center gap-[2px] mob:mr-3 mob:ml-0">
                 <button
                   className="h-[50px] w-[50px] bg-secondary rounded-[20px] flex items-center justify-center"
                   onClick={() => handleQuantityChange(quantity - 1)}
@@ -149,7 +149,7 @@ const ProductDisplay = () => {
                 </button>
               </div>
               <button
-                className="rounded-[20px] bg-lightgreen min-h-[50px] text-black flex items-center justify-center min-w-[160px] uppercase w-[267px] font-organetto text-base font-normal px-2"
+                className="rounded-[20px] bg-lightgreen min-h-[50px] text-black flex items-center justify-center min-w-[160px] uppercase w-[267px] font-organetto text-base font-normal px-2 mob:h-[50px] mob:text-[14px]"
                 onClick={handleAddToCart}
               >
                 Add to cart

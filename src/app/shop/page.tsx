@@ -33,7 +33,7 @@ const Shop = () => {
           Shop
         </h1>
         <div className="max-w-7xl mx-auto mt-[30px]">
-          <div className="grid grid-cols-2 justify-center justify-items-center w-full gap-x-[10px] gap-y-[30px] px-[200px] mob:px-[11px]">
+          <div className="grid grid-cols-2 justify-center justify-items-center w-full gap-x-[10px] gap-y-[30px] px-[200px] mob:px-[11px] tab:px-8">
             {products?.map((product) => (
               <div
                 key={product.id}

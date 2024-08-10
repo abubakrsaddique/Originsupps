@@ -53,7 +53,7 @@ const CartItem: FC<CartItemType> = ({
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-[2px]">
+        <div className="flex items-center gap-[2px] mob:mt-2">
           <button
             className="h-[40px] w-[40px] bg-lightgray rounded-[15px] flex items-center justify-center"
             onClick={() => handleQuantityChange(productName, false)}

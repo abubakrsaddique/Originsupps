@@ -19,8 +19,8 @@ const Cart = () => {
   );
 
   return (
-    <div className="fixed right-0 top-0 z-[100] h-full w-full bg-black bg-opacity-75">
-      <div className="fixed right-0 top-0 z-[999] h-full w-[705px] mob:w-full transform overflow-x-hidden text-black rounded-bl-[100px] bg-primary">
+    <div className="fixed right-0 top-0 z-[100] h-full w-full bg-black bg-opacity-50">
+      <div className="fixed right-0 top-0 z-[999] h-full w-[705px] mob:w-full mob:max-h-[790px] transform overflow-x-hidden text-black rounded-bl-[100px] bg-primary">
         <div className="mt-[20px] mb-[6px] px-[60px] mob:px-[25px] flex justify-between items-center">
           <p className="text-black text-[20px] font-organetto font-extrabold leading-[60px] uppercase">
             MY CART
@@ -29,7 +29,7 @@ const Cart = () => {
             <Image alt="closeIcon" src={CloseIcon} width={32} height={32} />
           </button>
         </div>
-        <div className="px-[60px] pb-[50px]">
+        <div className="px-[60px] pb-[50px] mob:px-6">
           <div>
             <div className="flex items-center gap-[23px] border-b border-b-gray">
               <p className="font-poppins text-black text-base cursor-pointer font-semibold leading-[32px] uppercase border-b-[2px] border-b-lightgreen">

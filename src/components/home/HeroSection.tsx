@@ -7,7 +7,7 @@ import Arrow from "@/public/arrow.svg";
 
 const HeroSection = () => {
   return (
-    <section className="flex  justify-center bg-black w-full overflow-hidden relative min-h-[1000px] mob:min-h-screen lg:min-h-full">
+    <section className="flex  justify-center bg-black w-full overflow-hidden relative min-h-[1000px] mob:min-h-screen ">
       <div className="max-h-[1000px]  max-w-[1900px] w-full flex items-center text-primary rounded-br-[140px] relative mob:min-h-[810px]">
         <div className="h-full w-full flex  items-center justify-start relative z-30 mob:mt-[-274px] ">
           <div className="w-1/2  min-w-[515px]  mt-[22px]  flex justify-center items-center mob:min-h-[250px] mob:h-auto mob:my-10 mob:pl-4 mob:pr-2  mob:mb-[70%] mob:ml-[-68px]">
