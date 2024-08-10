@@ -28,22 +28,22 @@ const ShopSection: FC = () => {
   };
 
   return (
-    <section className="bg-primary pt-5 relative z-[10]">
+    <section className="bg-primary pt-5 relative z-[10] mob:pt-0 mob:mt-[10px]">
       <div className="flex w-full justify-center">
-        <h1 className="text-3xl font-organetto z-1 text-black text-center font-extrabold pt-[50px]">
+        <h1 className="text-3xl font-organetto z-1 text-black text-center font-extrabold pt-[50px] mob:text-2xl mob:px-1 mob:pt-[30px]">
           OUR SUPPS STACK
         </h1>
       </div>
-      <div className="flex w-full pb-[145px] no-scrollbar px-[135px] gap-[30px] overflow-scroll mt-[70px]">
+      <div className="flex w-full mob:grid mob:grid-cols-2 pb-[145px] no-scrollbar px-4 gap-[30px] overflow-scroll mt-[70px]  mob:mt-10 mob:pb-20">
         {products?.map((product) => (
           <div
             key={product.id}
-            className="flex justify-center"
+            className="flex justify-center  mob:grid mob:grid-cols-2"
             onClick={() => handleProductClick(product.id)}
           >
             <div className="w-[370px] lg:max-w-[300px] mob:max-w-[170px]">
               <div className="group">
-                <div className="w-[370px] lg:w-full lg:max-w-[300px] mob:max-w-[170px] mob:max-h-[170px] rounded-[40px] mob:rounded-[16px] h-[370px] tab:h-[40%] bg-[#B2B2B2] flex items-center justify-center relative group-hover:border-[#BBFF2E] group-hover:border-[4px] group-hover:bg-[#F3F3F3] transition-all duration-400 group-hover:shadow-xl group-hover:cursor-pointer">
+                <div className="w-[370px] lg:w-full lg:max-w-[300px] mob:max-w-[170px] mob:max-h-[170px] rounded-[40px] mob:rounded-[16px] h-[370px] tab:h-[40%] bg-[#B2B2B2] flex items-center justify-center relative group-hover:border-[#BBFF2E] group-hover:border-[4px] group-hover:bg-[#F3F3F3]  group-hover:shadow-xl group-hover:cursor-pointer">
                   <div className="h-full w-full relative bg-transparent">
                     <Image
                       alt="product"

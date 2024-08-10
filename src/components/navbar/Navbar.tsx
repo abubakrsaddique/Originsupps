@@ -9,16 +9,23 @@ import { cartOpenAtom } from "@/src/app/store";
 import Image1 from "@/public/origin.svg";
 import Image2 from "@/public/originmob.svg";
 import Cart from "@/public/cart.svg";
+import { useCart } from "@/src/hook/useAddItemCart";
 
 const Navbar = () => {
   const [, setCartOpen] = useAtom(cartOpenAtom);
+  const { cartItems, isCartOpen, closeCart } = useCart();
+
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   const handleOpenCart = () => {
     setCartOpen(true);
   };
 
   return (
-    <nav className="bg-black border-b border-b-primary border-opacity-10 w-full py-8  px-14 2xl:px-[5%]  text-primary">
+    <nav className="bg-black border-b border-b-primary border-opacity-10 w-full py-8  px-14 2xl:px-[5%]  text-primary mob:px-5">
       <div className="flex items-center justify-between">
         {/* Desktop Menu */}
         <div className="flex items-center gap-8 mob:hidden">
@@ -64,9 +71,11 @@ const Navbar = () => {
 
         <div className="relative cursor-pointer" onClick={handleOpenCart}>
           <Image alt="Cart" className="" src={Cart} />
-          <span className="min-w-4 text-[8px] font-normal absolute top-[-6px] -right-2 min-h-[15px] bg-lightgreen text-black rounded-full flex items-center justify-center">
-            1
-          </span>
+          {totalQuantity > 0 && (
+            <span className="min-w-4 text-[8px] font-normal absolute top-[-6px] -right-2 min-h-[15px] bg-lightgreen text-black rounded-full flex items-center justify-center">
+              {totalQuantity}
+            </span>
+          )}
         </div>
       </div>
     </nav>
