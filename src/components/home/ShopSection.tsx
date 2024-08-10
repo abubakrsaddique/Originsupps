@@ -3,15 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import { FC } from "react";
-
 import { useCart } from "@/src/hook/useAddItemCart";
 import { Product } from "@/src/types";
 import CartIcon from "@/public/carticon.svg";
-import { useProducts } from "@/src/hook/useProductData";
-
-import Marque from "../marquee/Marque";
 import { useRouter } from "next/navigation";
+import Marque from "../marquee/Marque";
 import Cart from "../cartpage/Cart";
+import { useProducts } from "@/src/hook/useProductData";
 
 const ShopSection: FC = () => {
   const router = useRouter();
@@ -26,18 +24,7 @@ const ShopSection: FC = () => {
   };
 
   const handleAddToCart = (product: Product) => {
-    addItemToCart({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity: 1,
-      imageUrl: product.imageUrl,
-      flavour: product.flavour,
-      serving: 0,
-      descriptionHeading: "",
-      descriptionParagraph: "",
-      size: "",
-    });
+    addItemToCart(product, 1);
   };
 
   return (

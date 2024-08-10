@@ -32,7 +32,7 @@ const AddProduct: React.FC = () => {
     descriptionParagraphAtom
   );
 
-  const router = useRouter(); // Use router for navigation
+  const router = useRouter();
   const { mutate, status } = useAddProduct();
 
   const isLoading = status === "pending";
@@ -52,7 +52,6 @@ const AddProduct: React.FC = () => {
       },
       {
         onSuccess: () => {
-          // Clear form fields
           setImage(null);
           setTitle("");
           setServing(0);
@@ -62,7 +61,6 @@ const AddProduct: React.FC = () => {
           setDescriptionHeading("");
           setDescriptionParagraph("");
 
-          // Navigate to the shop page
           router.push("/shop");
         },
       }

@@ -23,28 +23,17 @@ const Shop = () => {
   };
 
   const handleAddToCart = (product: Product) => {
-    addItemToCart({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      quantity: 1,
-      imageUrl: product.imageUrl,
-      flavour: product.flavour,
-      serving: 0,
-      descriptionHeading: "",
-      descriptionParagraph: "",
-      size: "",
-    });
+    addItemToCart(product, 1);
   };
 
   return (
     <div>
-      <section className=" bg-primary text-black pb-[70px] rounded-br-[140px] ">
+      <section className="bg-primary text-black pb-[70px] rounded-br-[140px]">
         <h1 className="font-organetto text-3xl font-extrabold text-black leading-10 uppercase text-center mt-[70px] mb-[25px]">
           Shop
         </h1>
         <div className="max-w-7xl mx-auto mt-[30px]">
-          <div className="grid grid-cols-2  justify-center  justify-items-center w-full gap-x-[10px]  gap-y-[30px] px-[200px] ">
+          <div className="grid grid-cols-2 justify-center justify-items-center w-full gap-x-[10px] gap-y-[30px] px-[200px]">
             {products?.map((product) => (
               <div
                 key={product.id}
@@ -74,7 +63,7 @@ const Shop = () => {
                         </p>
                       </div>
                       <div
-                        className="bg-lightgreen h-[50px] px-[17px] rounded-[20px] mob:max-w-[68px] mob:max-h-[42px] flex items-center justify-center absolute bottom-[16px] mob:bottom-2 left-[50%] z-[100] "
+                        className="bg-lightgreen h-[50px] px-[17px] rounded-[20px] mob:max-w-[68px] mob:max-h-[42px] flex items-center justify-center absolute bottom-[16px] mob:bottom-2 left-[50%] z-[100]"
                         onClick={(e) => {
                           e.stopPropagation();
                           handleAddToCart(product);
