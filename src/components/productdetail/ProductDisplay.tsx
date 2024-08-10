@@ -7,6 +7,9 @@ import Image from "next/image";
 
 import { productAtom } from "@/src/app/store";
 import { useProducts } from "@/src/hook/useProductData";
+import { useCart } from "@/src/hook/useAddItemCart";
+import Cart from "../cartpage/Cart";
+import { Product } from "@/src/types";
 
 const isMountedAtom = atom(false);
 
@@ -15,6 +18,7 @@ const ProductDisplay = () => {
   const [product, setProduct] = useAtom(productAtom);
   const { data: products } = useProducts();
   const params = useParams();
+  const { addItemToCart, isCartOpen } = useCart();
 
   useEffect(() => {
     setIsMounted(true);
@@ -32,6 +36,21 @@ const ProductDisplay = () => {
   }, [isMounted, params, products, setProduct]);
 
   if (!isMounted || !product) return <p>Loading...</p>;
+
+  const handleAddToCart = (product: Product) => {
+    addItemToCart({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: 1,
+      imageUrl: product.imageUrl,
+      flavour: product.flavour,
+      serving: 0,
+      descriptionHeading: "",
+      descriptionParagraph: "",
+      size: "",
+    });
+  };
 
   return (
     <section className="w-full max-w-7xl mx-auto">
@@ -112,13 +131,25 @@ const ProductDisplay = () => {
                   +
                 </button>
               </div>
-              <button className="rounded-[20px] bg-lightgreen min-h-[50px] text-black flex items-center justify-center min-w-[160px] uppercase w-[267px] font-organetto text-base font-normal  px-2">
+              <button
+                className="rounded-[20px] bg-lightgreen min-h-[50px] text-black flex items-center justify-center min-w-[160px] uppercase w-[267px] font-organetto text-base font-normal  px-2"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleAddToCart(product);
+                }}
+              >
                 Add to cart
               </button>
             </div>
           </div>
         </div>
       </div>
+      {/* Cart Modal */}
+      {isCartOpen && (
+        <div>
+          <Cart />
+        </div>
+      )}
     </section>
   );
 };
