@@ -6,7 +6,7 @@ import { app } from "../Firebase";
 import { Product } from "../types";
 const db = getFirestore(app);
 
-const fetchProducts = async (): Promise<Product[]> => {
+export const fetchProducts = async (): Promise<Product[]> => {
   const productsCollection = collection(db, "products");
   const productSnapshot = await getDocs(productsCollection);
   const productsList = productSnapshot.docs.map((doc) => ({
