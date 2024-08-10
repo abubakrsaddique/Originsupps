@@ -2,13 +2,17 @@
 
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
+import { Product } from "@/src/types";
 import { useProducts } from "@/src/hook/useProductData";
 import CartIcon from "@/public/carticon.svg";
-import { useRouter } from "next/navigation";
+import { useCart } from "@/src/hook/useAddItemCart";
+import Cart from "@/src/components/cartpage/Cart";
 
 const Shop = () => {
   const router = useRouter();
+  const { addItemToCart, isCartOpen } = useCart();
   const { data: products, isLoading, error } = useProducts();
 
   if (isLoading) return <p>Loading...</p>;
@@ -16,6 +20,21 @@ const Shop = () => {
 
   const handleProductClick = (productId: string) => {
     router.push(`/product/${productId}`);
+  };
+
+  const handleAddToCart = (product: Product) => {
+    addItemToCart({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: 1,
+      imageUrl: product.imageUrl,
+      flavour: product.flavour,
+      serving: 0,
+      descriptionHeading: "",
+      descriptionParagraph: "",
+      size: "",
+    });
   };
 
   return (
@@ -54,7 +73,13 @@ const Shop = () => {
                           Servings
                         </p>
                       </div>
-                      <div className="bg-lightgreen h-[50px] px-[17px] rounded-[20px] mob:max-w-[68px] mob:max-h-[42px] flex items-center justify-center absolute bottom-[16px] mob:bottom-2 left-[50%] z-[100] -translate-x-[50%] mob:translate-x-[17%]">
+                      <div
+                        className="bg-lightgreen h-[50px] px-[17px] rounded-[20px] mob:max-w-[68px] mob:max-h-[42px] flex items-center justify-center absolute bottom-[16px] mob:bottom-2 left-[50%] z-[100] "
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleAddToCart(product);
+                        }}
+                      >
                         <span className="text-[24px] font-normal font-poppins">
                           +
                         </span>
@@ -83,6 +108,12 @@ const Shop = () => {
             ))}
           </div>
         </div>
+        {/* Cart Modal */}
+        {isCartOpen && (
+          <div>
+            <Cart />
+          </div>
+        )}
       </section>
     </div>
   );

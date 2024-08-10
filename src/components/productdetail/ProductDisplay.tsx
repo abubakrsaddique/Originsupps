@@ -1,22 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAtom } from "jotai";
+import { atom, useAtom } from "jotai";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 
 import { productAtom } from "@/src/app/store";
 import { useProducts } from "@/src/hook/useProductData";
 
+const isMountedAtom = atom(false);
+
 const ProductDisplay = () => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [isMounted, setIsMounted] = useAtom(isMountedAtom);
   const [product, setProduct] = useAtom(productAtom);
   const { data: products } = useProducts();
   const params = useParams();
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
+  }, [setIsMounted]);
 
   useEffect(() => {
     if (isMounted && products) {

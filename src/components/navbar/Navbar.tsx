@@ -1,12 +1,22 @@
+"use client";
+
 import React from "react";
+import { useAtom } from "jotai";
 import Link from "next/link";
 import Image from "next/image";
 
+import { cartOpenAtom } from "@/src/app/store";
 import Image1 from "@/public/origin.svg";
 import Image2 from "@/public/originmob.svg";
 import Cart from "@/public/cart.svg";
 
 const Navbar = () => {
+  const [, setCartOpen] = useAtom(cartOpenAtom);
+
+  const handleOpenCart = () => {
+    setCartOpen(true);
+  };
+
   return (
     <nav className="bg-black border-b border-b-primary border-opacity-10 w-full py-8  px-14 2xl:px-[5%]  text-primary">
       <div className="flex items-center justify-between">
@@ -52,7 +62,7 @@ const Navbar = () => {
 
         {/*Cart Logo */}
 
-        <div className="relative cursor-pointer">
+        <div className="relative cursor-pointer" onClick={handleOpenCart}>
           <Image alt="Cart" className="" src={Cart} />
           <span className="min-w-4 text-[8px] font-normal absolute top-[-6px] -right-2 min-h-[15px] bg-lightgreen text-black rounded-full flex items-center justify-center">
             1

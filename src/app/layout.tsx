@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Navbar from "@/src/components/navbar/Navbar";
 import TanstackProvider from "../provider/TanstackProvider";
+import Cart from "../components/cartpage/Cart";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} ${organetto.variable} `}>
         <TanstackProvider>
+          <Cart />
           <Navbar />
           {children}
           <ToastContainer position="top-center" />

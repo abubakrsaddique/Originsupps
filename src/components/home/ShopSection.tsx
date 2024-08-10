@@ -2,16 +2,21 @@
 
 import React from "react";
 import Image from "next/image";
+import { FC } from "react";
 
+import { useCart } from "@/src/hook/useAddItemCart";
+import { Product } from "@/src/types";
 import CartIcon from "@/public/carticon.svg";
 import { useProducts } from "@/src/hook/useProductData";
 
 import Marque from "../marquee/Marque";
 import { useRouter } from "next/navigation";
+import Cart from "../cartpage/Cart";
 
-const ShopSection = () => {
+const ShopSection: FC = () => {
   const router = useRouter();
   const { data: products, isLoading, error } = useProducts();
+  const { addItemToCart, isCartOpen } = useCart();
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error fetching products</p>;
@@ -20,16 +25,32 @@ const ShopSection = () => {
     router.push(`/product/${productId}`);
   };
 
+  const handleAddToCart = (product: Product) => {
+    addItemToCart({
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      quantity: 1,
+      imageUrl: product.imageUrl,
+      flavour: product.flavour,
+      serving: 0,
+      descriptionHeading: "",
+      descriptionParagraph: "",
+      size: "",
+    });
+  };
+
   return (
-    <section className=" bg-primary pt-5 relative z-[10] ">
+    <section className="bg-primary pt-5 relative z-[10]">
       <div className="flex w-full justify-center">
-        <h1 className="text-3xl font-organetto z-1 text-black  text-center font-extrabold pt-[50px] ">
+        <h1 className="text-3xl font-organetto z-1 text-black text-center font-extrabold pt-[50px]">
           OUR SUPPS STACK
         </h1>
       </div>
-      <div className="flex   w-full pb-[145px]   no-scrollbar px-[135px] gap-[30px] overflow-scroll mt-[70px] ">
+      <div className="flex w-full pb-[145px] no-scrollbar px-[135px] gap-[30px] overflow-scroll mt-[70px]">
         {products?.map((product) => (
           <div
+            key={product.id}
             className="flex justify-center"
             onClick={() => handleProductClick(product.id)}
           >
@@ -55,7 +76,13 @@ const ShopSection = () => {
                       Servings
                     </p>
                   </div>
-                  <div className="bg-lightgreen h-[50px] px-[17px] rounded-[20px] mob:max-w-[68px] mob:max-h-[42px] flex items-center justify-center absolute bottom-[16px] mob:bottom-2 left-[50%] z-[100] -translate-x-[50%] mob:translate-x-[17%]">
+                  <div
+                    className="bg-lightgreen h-[50px] px-[17px] rounded-[20px] mob:max-w-[68px] mob:max-h-[42px] flex items-center justify-center absolute bottom-[16px] mob:bottom-2 left-[50%] z-[100]"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAddToCart(product);
+                    }}
+                  >
                     <span className="text-[24px] font-normal font-poppins">
                       +
                     </span>
@@ -83,8 +110,15 @@ const ShopSection = () => {
           </div>
         ))}
       </div>
-      {/* Marque  */}
+      {/* Marque */}
       <Marque />
+
+      {/* Cart Modal */}
+      {isCartOpen && (
+        <div>
+          <Cart />
+        </div>
+      )}
     </section>
   );
 };
