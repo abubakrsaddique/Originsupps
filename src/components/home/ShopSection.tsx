@@ -16,7 +16,12 @@ const ShopSection: FC = () => {
   const { data: products, isLoading, error } = useProducts();
   const { addItemToCart, isCartOpen } = useCart();
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <p className="bg-black text-primary justify-center items-center flex h-screen w-full">
+        Loading...
+      </p>
+    );
   if (error) return <p>Error fetching products</p>;
 
   const handleProductClick = (productId: string) => {
