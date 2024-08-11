@@ -17,3 +17,7 @@ export const imageColorAtom = atom<{ preworkout: string; benefits: string }>({
   preworkout: "gray",
   benefits: "gray",
 });
+
+export const faqAtom = atom<number | null>(null);
+
+export const expandedIndexAtom = atom<number | null>(null);

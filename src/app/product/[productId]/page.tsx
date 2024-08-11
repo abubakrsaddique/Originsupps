@@ -3,6 +3,7 @@ import React from "react";
 import Marque from "@/src/components/marquee/Marque";
 import ProductDisplay from "@/src/components/productdetail/ProductDisplay";
 import RecomendedProducts from "@/src/components/productdetail/Recomended";
+import FAQSection from "@/src/components/productdetail/Faq";
 
 const ProductDetailPage = () => {
   return (
@@ -12,6 +13,7 @@ const ProductDetailPage = () => {
       </div>
       <ProductDisplay />
       <RecomendedProducts />
+      <FAQSection />
     </div>
   );
 };
