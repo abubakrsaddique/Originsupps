@@ -3,25 +3,19 @@
 import React from "react";
 import Image from "next/image";
 import { FC } from "react";
+
 import { useCart } from "@/src/hook/useAddItemCart";
 import { Product } from "@/src/types";
 import CartIcon from "@/public/carticon.svg";
 import { useRouter } from "next/navigation";
-import Marque from "../marquee/Marque";
 import Cart from "../cartpage/Cart";
 import { useProducts } from "@/src/hook/useProductData";
 
 const ShopSection: FC = () => {
   const router = useRouter();
-  const { data: products, isLoading, error } = useProducts();
+  const { data: products, error } = useProducts();
   const { addItemToCart, isCartOpen } = useCart();
 
-  if (isLoading)
-    return (
-      <p className="bg-black text-primary justify-center items-center flex h-screen w-full">
-        Loading...
-      </p>
-    );
   if (error) return <p>Error fetching products</p>;
 
   const handleProductClick = (productId: string) => {
@@ -102,8 +96,6 @@ const ShopSection: FC = () => {
           </div>
         ))}
       </div>
-      {/* Marque */}
-      <Marque />
 
       {/* Cart Modal */}
       {isCartOpen && (

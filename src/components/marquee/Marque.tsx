@@ -3,8 +3,8 @@ import Marquee from "react-fast-marquee";
 
 const Marque = () => {
   return (
-    <Marquee speed={50} gradient={false} pauseOnHover={true} direction="left">
-      <div className="h-[65px] flex items-center bg-black border-b-2 border-t-2 border-gray-700">
+    <Marquee direction="left">
+      <div className="h-[65px] flex items-center bg-black border-b-2 border-t-2 border-gray">
         <div className="rfm-marquee-container">
           <div className="rfm-marquee">
             <div className="rfm-initial-child-container">

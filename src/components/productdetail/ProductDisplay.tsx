@@ -62,12 +62,7 @@ const ProductDisplay = () => {
     }
   };
 
-  if (!isMounted || !product)
-    return (
-      <p className="bg-black text-primary justify-center items-center flex h-screen w-full">
-        Loading...
-      </p>
-    );
+  if (!isMounted || !product) return <p></p>;
 
   return (
     <section className="w-full max-w-7xl mx-auto">
