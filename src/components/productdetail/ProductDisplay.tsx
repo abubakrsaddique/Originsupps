@@ -65,7 +65,7 @@ const ProductDisplay = () => {
   if (!isMounted || !product) return <p></p>;
 
   return (
-    <section className="w-full max-w-7xl mx-auto">
+    <section className="w-full bg-primary rounded-br-[140px] mob:rounded-br-[70px] max-w-7xl mx-auto pt-[10px]">
       <div className="flex mob:block mob:mt-4 mob:pb-6 mt-12 pb-14">
         {/* Left Side */}
         <div className="flex justify-center w-full max-w-[40%] mob:max-w-full mob:pb-6 tab:pb-10">
