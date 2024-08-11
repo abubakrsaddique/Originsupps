@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Navbar from "@/src/components/navbar/Navbar";
+import Footer from "@/src/components/footer/Footer";
 import TanstackProvider from "../provider/TanstackProvider";
 import Cart from "../components/cartpage/Cart";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
           <Cart />
           <Navbar />
           {children}
+          <Footer />
           <ToastContainer position="top-center" />
         </TanstackProvider>
       </body>

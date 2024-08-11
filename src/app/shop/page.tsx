@@ -32,8 +32,8 @@ const Shop = () => {
   };
 
   return (
-    <div>
-      <section className="bg-primary text-black pb-[70px] rounded-br-[140px]">
+    <div className="bg-black">
+      <section className="bg-primary text-black pb-[70px] rounded-br-[140px] mob:rounded-br-[70px]">
         <h1 className="font-organetto text-3xl font-extrabold text-black leading-10 uppercase text-center mt-[70px] mb-[25px]">
           Shop
         </h1>
@@ -109,6 +109,7 @@ const Shop = () => {
           </div>
         )}
       </section>
+      <div className="bg-black mob:py-6"></div>
     </div>
   );
 };
