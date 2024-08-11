@@ -33,7 +33,7 @@ const WorkOutSection = () => {
   };
 
   return (
-    <section className="bg-black rounded-br-[140px] mob:rounded-br-[70px] pt-[10vh] w-full relative  min-h-[100vh] flex justify-center overflow-hidden ">
+    <section className="bg-black rounded-br-[140px] lg:min-h-[100vh] mob:rounded-br-[70px] pt-[10vh] w-full relative  min-h-[60vh] flex justify-center overflow-hidden ">
       <div className="max-w-[1300px]  w-full mob:w-[97%]">
         <div className="flex flex-col items-center w-full">
           <div className="relative z-30 w-full max-w-[1130px]">

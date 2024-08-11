@@ -13,6 +13,7 @@ module.exports = {
       primary: "white",
       black: "black",
       lightgreen: "rgb(196,255,46)",
+      grey: "rgb(243,243,243)",
       gray: "rgb(128,129,134)",
       lightgray: "rgb(201,201,201)",
       secondary: "rgb(231,231,231)",
