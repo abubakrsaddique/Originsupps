@@ -38,9 +38,9 @@ const AboutSection = () => {
           >
             We remember our own Origin story, the day we started, the decades in
             <br className="mob:hidden" />
-            the gym, and we know what you want because it's what we want. We
+            the gym, and we know what you want because its what we want. We
             <br className="mob:hidden" />
-            understand your needs because they're our needs too.
+            understand your needs because they are our needs too.
           </p>
         </div>
       </section>
