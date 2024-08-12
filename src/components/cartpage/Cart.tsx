@@ -1,15 +1,34 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import { useAtom } from "jotai";
-import { useQuery } from "@tanstack/react-query";
 import CloseIcon from "@/public/close.svg";
 import CartItem from "@/src/components/cartpage/CartItem";
 import { cartOpenAtom, cartItemsAtom } from "@/src/app/store";
 
+const getCartItemsFromLocalStorage = () => {
+  if (typeof window !== "undefined") {
+    const savedCartItems = localStorage.getItem("cartItems");
+    return savedCartItems ? JSON.parse(savedCartItems) : [];
+  }
+  return [];
+};
+
 const Cart = () => {
   const [isCartOpen, setCartOpen] = useAtom(cartOpenAtom);
-  const [cartItems] = useAtom(cartItemsAtom);
+  const [cartItems, setCartItems] = useAtom(cartItemsAtom);
+
+  useEffect(() => {
+    const savedCartItems = getCartItemsFromLocalStorage();
+    setCartItems(savedCartItems);
+  }, [setCartItems]);
+
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+  }, [cartItems]);
 
   if (!isCartOpen) return null;
 
