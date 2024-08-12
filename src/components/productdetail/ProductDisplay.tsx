@@ -5,26 +5,24 @@ import { atom, useAtom } from "jotai";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 
-import { productAtom } from "@/src/app/store";
+import { cartAtom, cartItemsAtom, productAtom } from "@/src/app/store";
 import { useProducts } from "@/src/hook/useProductData";
 import { useCart } from "@/src/hook/useAddItemCart";
 import Cart from "../cartpage/Cart";
 import { Product } from "@/src/types";
 
 const isMountedAtom = atom(false);
+const quantityAtom = atom(0);
 
 const ProductDisplay = () => {
   const [isMounted, setIsMounted] = useAtom(isMountedAtom);
   const [product, setProduct] = useAtom(productAtom);
+  const [quantity, setQuantity] = useAtom(quantityAtom);
+  const [cartItems, setCartItems] = useAtom(cartItemsAtom);
   const { data: products } = useProducts();
+
   const params = useParams();
-  const {
-    addItemToCart,
-    isCartOpen,
-    cartItems,
-    updateItemQuantity,
-    removeItemFromCart,
-  } = useCart();
+  const { addItemToCart, isCartOpen } = useCart();
 
   useEffect(() => {
     setIsMounted(true);
@@ -37,14 +35,60 @@ const ProductDisplay = () => {
       if (productId) {
         const selectedProduct = products.find((p) => p.id === productId);
         setProduct(selectedProduct || null);
+
+        const currentCartItem = selectedProduct
+          ? cartItems.find((item) => item.id === selectedProduct.id)
+          : null;
+        setQuantity(currentCartItem?.quantity || 0);
       }
     }
-  }, [isMounted, params, products, setProduct]);
+  }, [isMounted, params, products, setProduct, cartItems, setQuantity]);
 
-  const currentCartItem = product
-    ? cartItems.find((item) => item.id === product.id)
-    : null;
-  const quantity = currentCartItem?.quantity || 0;
+  const handleQuantityChange = (newQuantity: number, increment: boolean) => {
+    if (product) {
+      const existingCartItem = cartItems.find(
+        (item) => item.title === product.title
+      );
+
+      let updatedCartItems;
+      if (existingCartItem) {
+        updatedCartItems = cartItems
+          .map((item) => {
+            if (item.title === product.title) {
+              const updatedQuantity = increment
+                ? item.quantity + 1
+                : item.quantity - 1;
+              return {
+                ...item,
+                quantity: Math.max(updatedQuantity, 0),
+              };
+            }
+            return item;
+          })
+          .filter((item) => item.quantity > 0);
+      } else {
+        // Product is not in the cart, add it with the starting quantity
+        const newCartItem = {
+          ...product,
+          quantity: newQuantity, // Or start with quantity: 1 if you prefer
+        };
+        updatedCartItems = [...cartItems, newCartItem];
+      }
+
+      // Update the cart items state
+      setCartItems(updatedCartItems);
+      console.log("Updated Cart Items State:", updatedCartItems);
+
+      // Update the local quantity state
+      const updatedQuantity = existingCartItem
+        ? increment
+          ? quantity + 1
+          : Math.max(quantity - 1, 0)
+        : newQuantity; // If it's a new item, set quantity to the provided newQuantity
+      setQuantity(updatedQuantity);
+      console.log("Updated Quantity State:", updatedQuantity);
+    }
+  };
 
   const handleAddToCart = () => {
     if (product) {
@@ -52,21 +96,11 @@ const ProductDisplay = () => {
     }
   };
 
-  const handleQuantityChange = (newQuantity: number) => {
-    if (product) {
-      if (newQuantity <= 0) {
-        removeItemFromCart(product.id);
-      } else {
-        updateItemQuantity(product.id, newQuantity);
-      }
-    }
-  };
-
-  if (!isMounted || !product) return <p></p>;
+  if (!isMounted || !product) return <p>Loading...</p>;
 
   return (
-    <div className="bg-primary w-full  rounded-br-[140px] mob:rounded-br-[70px]  ">
-      <section className="w-full  max-w-7xl mx-auto pt-[10px]">
+    <div className="bg-primary w-full rounded-br-[140px] mob:rounded-br-[70px]">
+      <section className="w-full max-w-7xl mx-auto pt-[10px]">
         <div className="flex mob:block mob:mt-4 mob:pb-6 mt-12 pb-14">
           {/* Left Side */}
           <div className="flex justify-center w-full max-w-[40%] mob:max-w-full mob:pb-6 tab:pb-10">
@@ -85,7 +119,7 @@ const ProductDisplay = () => {
             </div>
           </div>
           {/* Right Side */}
-          <div className="w-full pl-[50px] pr-5 flex flex-col justify-between max-w-[650px] tab:px-0 mob:px-5 ">
+          <div className="w-full pl-[50px] pr-5 flex flex-col justify-between max-w-[650px] tab:px-0 mob:px-5">
             <div>
               <div className="flex items-center justify-between">
                 <p className="font-poppins text-black text-4xl font-bold leading-10 uppercase mob:text-2xl">
@@ -135,7 +169,8 @@ const ProductDisplay = () => {
                 <div className="flex items-center gap-[2px] mob:mr-3 mob:ml-0">
                   <button
                     className="h-[50px] w-[50px] bg-secondary rounded-[20px] flex items-center justify-center"
-                    onClick={() => handleQuantityChange(quantity - 1)}
+                    onClick={() => handleQuantityChange(quantity - 1, false)}
+                    disabled={quantity <= 0}
                   >
                     -
                   </button>
@@ -144,7 +179,7 @@ const ProductDisplay = () => {
                   </span>
                   <button
                     className="h-[50px] w-[50px] bg-secondary rounded-[20px] flex items-center justify-center"
-                    onClick={() => handleQuantityChange(quantity + 1)}
+                    onClick={() => handleQuantityChange(quantity + 1, true)}
                   >
                     +
                   </button>

@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
 import { useEffect } from "react";
-import { cartItemsAtom, cartOpenAtom } from "@/src/app/store";
+import { cartAtom, cartItemsAtom, cartOpenAtom } from "@/src/app/store";
 import type { CartItem } from "@/src/types";
 
 export const useCart = () => {

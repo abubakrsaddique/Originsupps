@@ -13,7 +13,7 @@ import { useCart } from "@/src/hook/useAddItemCart";
 
 const Navbar = () => {
   const [, setCartOpen] = useAtom(cartOpenAtom);
-  const { cartItems, isCartOpen, closeCart } = useCart();
+  const { cartItems, isCartOpen } = useCart();
 
   const totalQuantity = cartItems.reduce(
     (total, item) => total + item.quantity,
