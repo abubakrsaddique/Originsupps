@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { FC } from "react";
+import { useAtom } from "jotai";
 
 import { useCart } from "@/src/hook/useAddItemCart";
 import { Product } from "@/src/types";
@@ -10,11 +11,13 @@ import CartIcon from "@/public/carticon.svg";
 import { useRouter } from "next/navigation";
 import Cart from "../cartpage/Cart";
 import { useProducts } from "@/src/hook/useProductData";
+import { currentProductIdAtom } from "@/src/app/store";
 
 const RecomendedProducts: FC = () => {
   const router = useRouter();
   const { data: products, error } = useProducts();
   const { addItemToCart, isCartOpen } = useCart();
+  const [currentProductId] = useAtom(currentProductIdAtom);
 
   if (error) return <p>Error fetching products</p>;
 
@@ -26,23 +29,27 @@ const RecomendedProducts: FC = () => {
     addItemToCart(product, 1);
   };
 
+  const recommendedProducts = products?.filter(
+    (product) => product.id !== currentProductId
+  );
+
   return (
-    <section className="bg-black pt-5 relative z-[10] mob:pt-0 mob:mt-[10px mob:min-h-[60vh]">
+    <section className="bg-black pt-5 relative z-[10] mob:pt-0 mob:mt-[10px] mob:min-h-[60vh]">
       <div className="flex w-full justify-center">
         <h1 className="text-3xl font-organetto z-1 text-primary text-center font-extrabold pt-[50px] mob:text-2xl mob:px-1 mob:pt-[30px]">
           recommended products
         </h1>
       </div>
-      <div className="flex w-full pb-[145px] no-scrollbar px-4 gap-[30px] overflow-scroll mt-[70px]  ">
-        {products?.map((product) => (
+      <div className="flex w-full pb-[145px] no-scrollbar px-4 gap-[30px] overflow-scroll mt-[70px]">
+        {recommendedProducts?.map((product) => (
           <div
             key={product.id}
-            className="flex justify-center  "
+            className="flex justify-center"
             onClick={() => handleProductClick(product.id)}
           >
             <div className="w-[370px] lg:max-w-[300px] mob:max-w-[170px]">
               <div className="group">
-                <div className="w-[370px] lg:w-full lg:max-w-[300px] mob:max-w-[170px] mob:max-h-[170px] rounded-[40px] mob:rounded-[16px] h-[370px] tab:h-[40%] bg-[#B2B2B2] flex items-center justify-center relative group-hover:border-[#BBFF2E] group-hover:border-[4px] group-hover:bg-[#F3F3F3]  group-hover:shadow-xl group-hover:cursor-pointer">
+                <div className="w-[370px] lg:w-full lg:max-w-[300px] mob:max-w-[170px] mob:max-h-[170px] rounded-[40px] mob:rounded-[16px] h-[370px] tab:h-[40%] bg-[#B2B2B2] flex items-center justify-center relative group-hover:border-[#BBFF2E] group-hover:border-[4px] group-hover:bg-[#F3F3F3] group-hover:shadow-xl group-hover:cursor-pointer">
                   <div className="h-full w-full relative bg-transparent">
                     <Image
                       alt="product"

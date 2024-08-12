@@ -1,8 +1,13 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
-import Cart from "../cartpage/Cart";
+import { useAtom } from "jotai";
+
 import { useProductDisplay } from "@/src/hook/useProductDisplay";
+import { currentProductIdAtom } from "@/src/app/store";
+
+import Cart from "../cartpage/Cart";
 
 const ProductDisplay = () => {
   const {
@@ -13,6 +18,14 @@ const ProductDisplay = () => {
     handleQuantityChange,
     handleAddToCart,
   } = useProductDisplay();
+
+  const [, setCurrentProductId] = useAtom(currentProductIdAtom);
+
+  React.useEffect(() => {
+    if (product?.id) {
+      setCurrentProductId(product.id);
+    }
+  }, [product?.id, setCurrentProductId]);
 
   if (!isMounted || !product) return <p>Loading...</p>;
 
