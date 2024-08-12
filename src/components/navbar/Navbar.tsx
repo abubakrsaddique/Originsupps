@@ -71,11 +71,13 @@ const Navbar = () => {
 
         <div className="relative cursor-pointer" onClick={handleOpenCart}>
           <Image alt="Cart" className="" src={Cart} />
-          {totalQuantity > 0 && (
-            <span className="min-w-4 text-[8px] font-normal absolute top-[-6px] -right-2 min-h-[15px] bg-lightgreen text-black rounded-full flex items-center justify-center">
-              {totalQuantity}
-            </span>
-          )}
+          <span
+            className={`min-w-4 text-[8px] font-normal absolute top-[-6px] -right-2 min-h-[15px] bg-lightgreen text-black rounded-full flex items-center justify-center ${
+              totalQuantity === 0 ? "opacity-100" : "opacity-100"
+            }`}
+          >
+            {totalQuantity}
+          </span>
         </div>
       </div>
     </nav>
