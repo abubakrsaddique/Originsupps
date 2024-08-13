@@ -64,7 +64,7 @@ export const useProductDisplay = () => {
         // Product is not in the cart, add it with the starting quantity
         const newCartItem = {
           ...product,
-          quantity: newQuantity, // Or start with quantity: 1 if you prefer
+          quantity: newQuantity,
         };
         updatedCartItems = [...cartItems, newCartItem];
       }
@@ -78,7 +78,7 @@ export const useProductDisplay = () => {
         ? increment
           ? quantity + 1
           : Math.max(quantity - 1, 0)
-        : newQuantity; // If it's a new item, set quantity to the provided newQuantity
+        : newQuantity;
       setQuantity(updatedQuantity);
       console.log("Updated Quantity State:", updatedQuantity);
     }
