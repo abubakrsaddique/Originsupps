@@ -58,7 +58,7 @@ const WorkOutSection = () => {
                 id="text-btn"
                 disabled={activeTab === "preworkout"}
                 onClick={() => handleButtonClick("preworkout")}
-                className="relative text-primary text-left uppercase text-[18px] mob:text-base font-bold font-organetto leading-6 mob:ml-6 "
+                className="relative text-primary text-left uppercase text-[18px] mob:text-sm font-bold font-organetto leading-6 mob:ml-8 "
               >
                 Pre Workout
                 <Image
@@ -72,7 +72,7 @@ const WorkOutSection = () => {
               <button
                 id="text-btn"
                 onClick={() => handleButtonClick("benefits")}
-                className="relative text-primary text-left uppercase text-[18px] mob:text-base font-bold font-organetto leading-6 mob:ml-6 "
+                className="relative text-primary text-left uppercase text-[18px] mob:text-sm font-bold font-organetto leading-6 mob:ml-8 "
               >
                 WHEY PROTEIN
                 <Image
@@ -88,7 +88,7 @@ const WorkOutSection = () => {
         </div>
 
         <div className="rounded-br-[140px]  w-full flex justify-center">
-          <div className="max-w-[90%]  tab:max-w-[90%] tab:mt-[136px] mob:min-h-[50vh] pb-[60px] mob:pb-[5px] flex mob:block justify-center items-end w-full z-[1] relative">
+          <div className="max-w-[90%]  tab:max-w-[90%] mob:max-w-[100%] tab:mt-[136px] mob:min-h-[50vh] pb-[60px] mob:pb-[5px] flex mob:block justify-center items-end w-full z-[1] relative">
             {/* Mobile Image */}
             <div className="w-ful relative mob:flex justify-center hidden mt-[170%] mb-[-55px] ">
               <Image
@@ -105,7 +105,7 @@ const WorkOutSection = () => {
               style={{ opacity: 1 }}
             >
               <div className="flex flex-col gap-6 justify-center mt-20 mob:w-[100%] mob:pb-10  mob:pr-0">
-                <p className="text-primary font-normal mb-4 font-organetto text-base leading-6 uppercase">
+                <p className="text-primary font-normal mb-4 font-organetto text-base leading-6 uppercase mob:ml-7">
                   BENEFITS OF OUR{" "}
                   <span className="text-lightgreen">
                     {tabHeaders[activeTab]}:
@@ -119,7 +119,7 @@ const WorkOutSection = () => {
                   )}
                 </div>
                 <Link href="/shop">
-                  <button className="rounded-[20px] mob:mt-0 bg-lightgreen min-h-[50px] text-black text-base font-normal font-organetto flex items-center justify-center min-w-[160px] mt-[14px]">
+                  <button className="rounded-[20px] mob:mt-0 mob:ml-[90px] bg-lightgreen mob:justify-center min-h-[50px] text-black text-base font-normal font-organetto flex items-center justify-center min-w-[160px] mt-[14px]">
                     SHOP
                   </button>
                 </Link>

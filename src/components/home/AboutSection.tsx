@@ -10,7 +10,7 @@ const AboutSection = () => {
         alt="backgroundImg"
         src={Image1}
         quality={75}
-        className="absolute top-0 z-0 "
+        className="absolute top-0 z-0 h-[100vh]"
       />
       <section className="w-full  z-50 mob:px-5">
         <div className="h-full flex flex-col items-center justify-center gap-[67px]">

@@ -14,18 +14,18 @@ const SubscribeSection: React.FC = () => {
             src={RightImage}
             width={423}
             height={344}
-            className="absolute top-[-30%] mob:top-[-21%] mob:left-[8%] tab:top-[-3%] left-[40%] tab:left-[34%]"
+            className="absolute top-[-30%] mob:top-[4%] mob:left-[8%] tab:top-[-3%] left-[40%] tab:left-[34%]"
           />
           <Image
             alt="LeftBracket"
             src={LeftImage}
             width={426}
             height={346}
-            className="absolute top-[-20%] mob:top-[-14%] mob:right-[8%] tab:top-[0%] right-[40%] tab:right-[35%] "
+            className="absolute top-[-20%] mob:top-[10%] mob:right-[8%] tab:top-[0%] right-[40%] tab:right-[35%] "
           />
 
           <div className="relative scale-[0.5] mob:w-full mob:mt-[10%]">
-            <p className="text-primary uppercase block text-center text-5xl mob:text-[18px] mob:leading-6 font-bold leading-[5rem] font-organetto">
+            <p className="text-primary uppercase block text-center text-5xl mob:text-[36px] mob:leading-[3rem] font-bold leading-[5rem] mob:font-poppins font-organetto">
               SUBSCRIBE <br className="hidden mob:block" /> FOR THE <br />{" "}
               LATEST SCOOP
             </p>

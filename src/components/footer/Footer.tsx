@@ -29,8 +29,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
         {/* Navigation links section */}
-        <div className="flex gap-[90px] pl-[90px] lg:gap-[40px] mob:flex-col  tab:my-8 mob:mt-8 mob:gap-[15px]">
-          <div className="flex flex-col gap-[15px]">
+        <div className="flex gap-[90px] pl-[90px] mob:pl-0 lg:gap-[40px] mob:flex-col  tab:my-8 mob:mt-8 mob:gap-[15px]">
+          <div className="flex flex-col gap-[15px] items-center">
             <Link href="/">
               <p className="text-base font-normal text-lightgray uppercase mob:w-fit font-organetto">
                 HOME
