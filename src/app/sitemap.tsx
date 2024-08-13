@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const productRoutes = await fetchProductRoutes();
 
-  const routes = ["", "/about", "/product"].map((route) => ({
+  const routes = ["", "/shop", "/product"].map((route) => ({
     url: `${WEBSITE_HOST_URL}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency,
