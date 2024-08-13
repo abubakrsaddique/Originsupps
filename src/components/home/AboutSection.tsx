@@ -9,8 +9,6 @@ const AboutSection = () => {
       <Image
         alt="backgroundImg"
         src={Image1}
-        layout="fill"
-        objectFit="cover"
         quality={75}
         className="absolute top-0 z-0 "
       />

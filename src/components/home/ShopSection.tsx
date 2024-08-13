@@ -33,7 +33,7 @@ const ShopSection: FC = () => {
           OUR SUPPS STACK
         </h1>
       </div>
-      <div className="flex w-full mob:grid mob:grid-cols-2 pb-[145px] no-scrollbar px-4 gap-[30px] overflow-scroll mt-[70px]  mob:mt-10 mob:pb-20">
+      <div className="flex w-full mob:grid mob:grid-cols-2 pb-[145px] no-scrollbar pr-4 pl-32 gap-[30px] overflow-scroll mt-[70px]  mob:mt-10 mob:pb-20">
         {products?.map((product) => (
           <div
             key={product.id}

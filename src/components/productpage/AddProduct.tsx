@@ -97,7 +97,7 @@ const AddProduct: React.FC = () => {
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="mt-1 block w-full py-2 border-gray rounded-md shadow-sm"
+          className="mt-1 block w-full py-2 pl-2 border-gray rounded-md shadow-sm"
         />
       </div>
       <div className="mb-4">
@@ -113,7 +113,7 @@ const AddProduct: React.FC = () => {
           id="number"
           value={serving}
           onChange={(e) => setServing(parseFloat(e.target.value))}
-          className="mt-1 block w-full py-2 border-gray rounded-md shadow-sm remove-arrow"
+          className="mt-1 block w-full py-2 pl-2 border-gray rounded-md shadow-sm remove-arrow"
         />
       </div>
       <div className="mb-4">
@@ -129,7 +129,7 @@ const AddProduct: React.FC = () => {
           id="flavour"
           value={flavour}
           onChange={(e) => setFlavour(e.target.value)}
-          className="mt-1 block w-full py-2 border-gray rounded-md shadow-sm"
+          className="mt-1 block w-full py-2 pl-2 border-gray rounded-md shadow-sm"
         />
       </div>
       <div className="mb-4">
@@ -145,7 +145,7 @@ const AddProduct: React.FC = () => {
           id="size"
           value={size}
           onChange={(e) => setSize(e.target.value)}
-          className="mt-1 block w-full py-2 border-gray rounded-md shadow-sm"
+          className="mt-1 block w-full py-2 pl-2 border-gray rounded-md shadow-sm"
         />
       </div>
       <div className="mb-4">
@@ -161,7 +161,7 @@ const AddProduct: React.FC = () => {
           id="price"
           value={price}
           onChange={(e) => setPrice(parseFloat(e.target.value))}
-          className="mt-1 block w-full py-2 border-gray rounded-md shadow-sm remove-arrow"
+          className="mt-1 block w-full py-2 pl-2 border-gray rounded-md shadow-sm remove-arrow"
         />
       </div>
       <div className="mb-4">
@@ -177,7 +177,7 @@ const AddProduct: React.FC = () => {
           id="descriptionHeading"
           value={descriptionHeading}
           onChange={(e) => setDescriptionHeading(e.target.value)}
-          className="mt-1 block w-full py-2 border-gray rounded-md shadow-sm"
+          className="mt-1 block w-full py-2 pl-2 border-gray rounded-md shadow-sm"
         />
       </div>
       <div className="mb-4">
@@ -192,7 +192,7 @@ const AddProduct: React.FC = () => {
           id="descriptionParagraph"
           value={descriptionParagraph}
           onChange={(e) => setDescriptionParagraph(e.target.value)}
-          className="mt-1 block w-full border-gray py-6 rounded-md shadow-sm"
+          className="mt-1 block w-full pl-2 border-gray py-6 rounded-md shadow-sm"
         ></textarea>
       </div>
       <Button
