@@ -4,7 +4,10 @@ import { db, app } from "../Firebase";
 import { Product } from "../types";
 import { getFirestore } from "firebase/firestore";
 
-const WEBSITE_HOST_URL = process.env.SITE_URL || "http://localhost:3000";
+const isDevelopment = process.env.NODE_ENV === "development";
+const WEBSITE_HOST_URL = isDevelopment
+  ? "http://localhost:3000"
+  : "https://originsupps-xv81.vercel.app";
 
 type ChangeFrequency =
   | "always"

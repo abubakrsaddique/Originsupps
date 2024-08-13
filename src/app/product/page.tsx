@@ -1,5 +1,10 @@
-import AddProduct from "@/src/components/productpage/AddProduct";
+import { Metadata } from "next";
 import React from "react";
+import AddProduct from "@/src/components/productpage/AddProduct";
+
+export const metadata: Metadata = {
+  title: "Add Product",
+};
 
 const Product = () => {
   return (

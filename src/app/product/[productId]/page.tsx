@@ -1,9 +1,14 @@
+import { Metadata } from "next";
 import React from "react";
 
 import Marque from "@/src/components/marquee/Marque";
 import ProductDisplay from "@/src/components/productdetail/ProductDisplay";
 import RecomendedProducts from "@/src/components/productdetail/Recomended";
 import FAQSection from "@/src/components/productdetail/Faq";
+
+export const metadata: Metadata = {
+  title: "Product",
+};
 
 const ProductDetailPage = () => {
   return (
