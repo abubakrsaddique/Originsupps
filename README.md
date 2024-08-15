@@ -13,7 +13,7 @@ The repo provide a complete detail about this project. I have created this proje
 - Using Next.js App Router
 - Using Jotai For State Management
 - Setting up a Firebase
-- Creating Authentication Component
+- TanStack-Query For Posting and Fetching Data
 
 ## Installation
 
