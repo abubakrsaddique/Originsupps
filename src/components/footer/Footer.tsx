@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
               </p>
             </Link>
             <Link href="/product">
-              <p className="text-base  font-normal text-lightgray font-organetto uppercase mob:w-fit">
+              <p className="text-base ml-10 mob:ml-0 font-normal text-lightgray font-organetto uppercase mob:w-fit">
                 Add Product
               </p>
             </Link>
