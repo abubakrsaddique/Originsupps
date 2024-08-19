@@ -3,6 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useAtom } from "jotai";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useEffect } from "react";
 
 import { activeTabAtom, imageColorAtom } from "@/src/app/store";
 import Image1 from "@/public/Pre-Workout.webp";
@@ -12,8 +15,14 @@ import Image3 from "@/public/Rectangle2.png";
 import Image4 from "@/public/Vector1.webp";
 import Image5 from "@/public/Vector2.webp";
 import Image6 from "@/public/loading.svg";
+import Image8 from "@/public/green-eclipse.svg";
+import Image9 from "@/public/red-eclipse.svg";
+import Image10 from "@/public/purple-eclise.svg";
+
 import BenifitList from "../workoutcontent/BenifitList";
 import PreWorkOut from "../workoutcontent/PreWorkOut";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const WorkOutSection = () => {
   const [activeTab, setActiveTab] = useAtom(activeTabAtom);
@@ -31,6 +40,38 @@ const WorkOutSection = () => {
       benefits: tab === "benefits" ? "rgb(196,255,46)" : "gray",
     });
   };
+
+  // GSAP Animation For Images
+
+  useEffect(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".purple-image",
+          start: "top 20%",
+          end: "top 20%",
+          scrub: true,
+          // markers: true,
+        },
+      })
+      .fromTo(
+        ".purple-image",
+        { y: "-50%", scale: 1 },
+        { y: "-159%", scale: 1.5, ease: "power2.out" }
+      )
+      .fromTo(
+        ".green-image",
+        { x: "0%", y: "-50%", rotation: 0, scale: 1 },
+        { x: "0%", y: "-160%", scale: 1.5, rotation: 30, ease: "power2.out" },
+        "-=0.5"
+      )
+      .fromTo(
+        ".red-image",
+        { x: "0%", y: "50%", scale: 1 },
+        { x: "0%", y: "-78%", scale: 1.5, rotation: -30, ease: "power2.out" },
+        "-=0.5"
+      );
+  }, []);
 
   return (
     <section className="bg-black rounded-br-[140px] lg:min-h-[100vh] mob:rounded-br-[70px] pt-[10vh] w-full relative  min-h-[60vh] flex justify-center overflow-hidden ">
@@ -98,6 +139,27 @@ const WorkOutSection = () => {
                 className="cursor-pointer absolute w-[95%] bottom-[40px]  right-2 "
                 src={activeTab === "preworkout" ? Image1 : Image7}
               />
+              <Image
+                alt="Green Eclipse"
+                width={457}
+                height={139}
+                className="absolute  mob:bottom-[70px] "
+                src={Image8}
+              />
+              <Image
+                alt="Red Eclipse"
+                width={459}
+                height={140}
+                className="absolute  mob:bottom-[30px]"
+                src={Image9}
+              />
+              <Image
+                alt="Purple Eclipse"
+                width={461}
+                height={139}
+                className="absolute  mob:bottom-[-10px] "
+                src={Image10}
+              />
             </div>
 
             <div
@@ -126,7 +188,7 @@ const WorkOutSection = () => {
               </div>
             </div>
             <div className="w-[50%] mob:hidden  bottom-0 mt-[100px] max-w-[700px] relative flex flex-col items-center justify-center">
-              <div className="w-[50%]  relative flex justify-center ">
+              <div className="w-[50%] mb-9 relative flex justify-center ">
                 <Image
                   alt="Pre Workout"
                   width={489}
@@ -135,6 +197,27 @@ const WorkOutSection = () => {
                   src={activeTab === "preworkout" ? Image1 : Image7}
                 />
               </div>
+              <Image
+                alt="Green Eclipse"
+                width={457}
+                height={139}
+                className="absolute bottom-[-80px] mob:bottom-[70px] green-image"
+                src={Image8}
+              />
+              <Image
+                alt="Red Eclipse"
+                width={459}
+                height={140}
+                className="absolute bottom-[16px] mob:bottom-[30px] red-image"
+                src={Image9}
+              />
+              <Image
+                alt="Purple Eclipse"
+                width={461}
+                height={139}
+                className="absolute bottom-[-100px] mob:bottom-[-10px] purple-image"
+                src={Image10}
+              />
             </div>
           </div>
         </div>

@@ -60,18 +60,20 @@ import Image1 from "@/public/About-Section.webp";
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutSection = () => {
+  // GSAP animations
+
   useEffect(() => {
-    // GSAP animations
     gsap.fromTo(
       ".text-first",
       { opacity: 0, y: 50 },
       {
         opacity: 1,
         y: 0,
+        duration: 1.5,
         scrollTrigger: {
           trigger: ".text-first",
           start: "top 80%",
-          end: "top 60%",
+          end: "top 40%",
           scrub: true,
         },
       }
@@ -83,10 +85,12 @@ const AboutSection = () => {
       {
         opacity: 1,
         scale: 1,
+        duration: 1.5,
+        delay: 0.5,
         scrollTrigger: {
           trigger: ".spinner",
-          start: "top 80%",
-          end: "top 60%",
+          start: "top 40%",
+          end: "top 20%",
           scrub: true,
         },
       }
@@ -98,10 +102,12 @@ const AboutSection = () => {
       {
         opacity: 1,
         y: 0,
+        duration: 1.5,
+        delay: 2,
         scrollTrigger: {
           trigger: ".text-second",
-          start: "top 80%",
-          end: "top 60%",
+          start: "top 50%",
+          end: "top 30%",
           scrub: true,
         },
       }
