@@ -19,11 +19,11 @@ const SubscribeSection: React.FC = () => {
       scale: 1.5,
       scrollTrigger: {
         trigger: ".subscribe-section",
-        start: "top 20%",
-        end: "top 20%",
-        scrub: true,
+        start: "top 30%",
+        end: "top 10%",
+        scrub: 1,
         toggleActions: "play reverse play reverse",
-        // markers: true,
+        markers: true,
       },
     });
 
@@ -33,11 +33,11 @@ const SubscribeSection: React.FC = () => {
       y: "0%",
       scrollTrigger: {
         trigger: ".subscribe-section",
-        start: "top 20%",
-        end: "top 20%",
-        scrub: true,
+        start: "top 30%",
+        end: "top 10%",
+        scrub: 1,
         toggleActions: "play reverse play reverse",
-        // markers: true,
+        markers: true,
       },
     });
 
@@ -47,30 +47,26 @@ const SubscribeSection: React.FC = () => {
       y: "10%",
       scrollTrigger: {
         trigger: ".subscribe-section",
-        start: "top 20%",
-        end: "top 20%",
-        scrub: true,
+        start: "top 30%",
+        end: "top 10%",
+        scrub: 1,
         toggleActions: "play reverse play reverse",
-        // markers: true,
+        markers: true,
       },
     });
 
-    gsap.to(
-      ".email-element",
-
-      {
-        scale: 1.5,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: ".subscribe-section",
-          start: "top 20%",
-          end: "top 20%",
-          scrub: true,
-          toggleActions: "play reverse play reverse",
-          // markers: true,
-        },
-      }
-    );
+    gsap.to(".email-element", {
+      scale: 1.5,
+      opacity: 1,
+      scrollTrigger: {
+        trigger: ".subscribe-section",
+        start: "top 30%",
+        end: "top 10%",
+        scrub: 1,
+        toggleActions: "play reverse play reverse",
+        markers: true,
+      },
+    });
   }, []);
 
   return (
