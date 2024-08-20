@@ -23,7 +23,7 @@ const SubscribeSection: React.FC = () => {
         end: "top 10%",
         scrub: 1,
         toggleActions: "play reverse play reverse",
-        markers: true,
+        // markers: true,
       },
     });
 
@@ -37,7 +37,7 @@ const SubscribeSection: React.FC = () => {
         end: "top 10%",
         scrub: 1,
         toggleActions: "play reverse play reverse",
-        markers: true,
+        // markers: true,
       },
     });
 
@@ -51,7 +51,7 @@ const SubscribeSection: React.FC = () => {
         end: "top 10%",
         scrub: 1,
         toggleActions: "play reverse play reverse",
-        markers: true,
+        // markers: true,
       },
     });
 
@@ -64,7 +64,7 @@ const SubscribeSection: React.FC = () => {
         end: "top 10%",
         scrub: 1,
         toggleActions: "play reverse play reverse",
-        markers: true,
+        // markers: true,
       },
     });
   }, []);
