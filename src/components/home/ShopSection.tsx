@@ -48,7 +48,7 @@ const ShopSection: FC = () => {
                       alt="product"
                       width={371}
                       height={307.5}
-                      className="w-full h-auto object-contain rounded-[40px]"
+                      className="h-full w-full object-contain rounded-[40px]"
                       src={product.imageUrl}
                     />
                   </div>
