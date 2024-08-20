@@ -12,74 +12,62 @@ import RightImage from "@/public/contact-bracket-right.svg";
 gsap.registerPlugin(ScrollTrigger);
 
 const SubscribeSection: React.FC = () => {
+  // GSAP Animation
+
   useEffect(() => {
-    // GSAP Animation For Text
-    gsap.fromTo(
-      ".text-element",
-      { fontSize: "3rem", scale: 0.8, y: "-50%" },
-      {
-        fontSize: "5rem",
-        scale: 1,
-        y: "70%",
-        scrollTrigger: {
-          trigger: ".subscribe-section",
-          start: "top 90%",
-          end: "bottom top",
-          scrub: true,
-          toggleActions: "play reverse play reverse",
-        },
-      }
-    );
+    gsap.to(".text-element", {
+      scale: 1.5,
+      scrollTrigger: {
+        trigger: ".subscribe-section",
+        start: "top 20%",
+        end: "top 20%",
+        scrub: true,
+        toggleActions: "play reverse play reverse",
+        // markers: true,
+      },
+    });
 
-    // GSAP Animation For Right Image
-    gsap.fromTo(
-      ".right-image",
-      { scale: 0.8, x: "65%", y: "-33%" },
-      {
-        scale: 1,
-        x: "95%",
-        y: "40%",
-        scrollTrigger: {
-          trigger: ".subscribe-section",
-          start: "top 90%",
-          end: "bottom top",
-          scrub: true,
-          toggleActions: "play reverse play reverse",
-        },
-      }
-    );
+    gsap.to(".right-image", {
+      scale: 1,
+      x: "50%",
+      y: "0%",
+      scrollTrigger: {
+        trigger: ".subscribe-section",
+        start: "top 20%",
+        end: "top 20%",
+        scrub: true,
+        toggleActions: "play reverse play reverse",
+        // markers: true,
+      },
+    });
 
-    // GSAP Animation For Left Image
-    gsap.fromTo(
-      ".left-image",
-      { scale: 0.8, x: "-60%", y: "-33%" },
-      {
-        scale: 1,
-        x: "-90%",
-        y: "40%",
-        scrollTrigger: {
-          trigger: ".subscribe-section",
-          start: "top 90%",
-          end: "bottom top",
-          scrub: true,
-          toggleActions: "play reverse play reverse",
-        },
-      }
-    );
+    gsap.to(".left-image", {
+      scale: 1,
+      x: "-50%",
+      y: "10%",
+      scrollTrigger: {
+        trigger: ".subscribe-section",
+        start: "top 20%",
+        end: "top 20%",
+        scrub: true,
+        toggleActions: "play reverse play reverse",
+        // markers: true,
+      },
+    });
 
-    // GSAP Animation For Form
-    gsap.fromTo(
+    gsap.to(
       ".email-element",
-      { opacity: 0, y: "100%" },
+
       {
+        scale: 1.5,
         opacity: 1,
-        y: "290%",
         scrollTrigger: {
           trigger: ".subscribe-section",
-          start: "top 90%",
-          end: "bottom top",
+          start: "top 20%",
+          end: "top 20%",
           scrub: true,
           toggleActions: "play reverse play reverse",
+          // markers: true,
         },
       }
     );
@@ -87,30 +75,30 @@ const SubscribeSection: React.FC = () => {
 
   return (
     <div className="flex justify-center bg-black w-full overflow-x-hidden py-28 mob:py-32 subscribe-section">
-      <section className="flex items-center mob:hidden tab:hidden justify-center mob:pt-0 pt-32 xl:max-w-[30%] mob:max-w-full">
+      <section className=" mob:hidden tab:hidden  flex items-center justify-center mob:pt-0 pt-32 xl:max-w-[30%] mob:max-w-full">
         <div className="relative">
           <Image
             alt="RightBracket"
             src={RightImage}
             width={423}
             height={344}
-            className="absolute right-image top-[-24%] mob:top-[4%] mob:left-[8%] tab:top-[-3%] left-[18%] tab:left-[34%]"
+            className="absolute scale-[0.7] top-[-50%] mob:top-[4%] mob:left-[8%] tab:top-[-3%] left-[20%] tab:left-[34%] right-image"
           />
           <Image
             alt="LeftBracket"
             src={LeftImage}
             width={426}
             height={346}
-            className="absolute left-image top-[-18%] mob:top-[10%] mob:right-[8%] tab:top-[0%] right-[19%] tab:right-[35%]"
+            className="absolute scale-[0.7] top-[-50%] mob:top-[10%] mob:right-[8%] tab:top-[0%] right-[20%] tab:right-[35%] left-image"
           />
 
-          <div className="relative scale-[0.5] mob:w-full mob:mt-[10%]">
-            <p className="text-primary uppercase block text-center text-3xl mob:text-[36px] mob:leading-[3rem] font-bold leading-[5rem] mob:font-poppins font-organetto text-element">
+          <div className="relative scale-[0.7] mt-[-38px]   mob:w-full mob:mt-[10%]">
+            <p className="text-primary scale-[0.5] uppercase block text-center text-3xl mob:text-[36px] mob:leading-[3rem] font-bold leading-[5rem] mob:font-poppins font-organetto text-element">
               SUBSCRIBE <br className="hidden mob:block" /> FOR THE <br />{" "}
               LATEST SCOOP
             </p>
 
-            <form className="mt-[40px] mob:mt-2 relative email-element">
+            <form className="mt-[40px]  scale-[0.5] mob:mt-2 relative email-element">
               <input
                 type="email"
                 required
