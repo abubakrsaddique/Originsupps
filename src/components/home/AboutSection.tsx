@@ -86,8 +86,7 @@ const AboutSection = () => {
             width="28"
             height="25"
             decoding="async"
-            className="animate-spin duration-500 h-[60px] w-[60px] transform opacity-100 spinner"
-            style={{ transform: "rotate(139.428deg)" }}
+            className="animate-spin duration-500 h-[60px] w-[60px] transform opacity-100 spinner animate-spin-smooth"
             src={Loading}
           />
           <p
