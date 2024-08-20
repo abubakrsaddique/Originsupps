@@ -9,8 +9,7 @@ const LoadingPage = () => {
         loading="lazy"
         width={60}
         height={60}
-        className="animate-spin duration-500 animate-spin-smooth"
-        // style={{ transform: "rotate(139.428deg)" }}
+        className="animate-spin-smooth "
         src={Image1}
       />
     </div>
